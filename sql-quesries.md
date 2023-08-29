@@ -24,3 +24,20 @@ CREATE TABLE <name>{
 -`INSERT INTO <table_name> (col1, col2, ...) VALUES(<val1>, <val2>, ...);` // to insert value into a table
 
 -`SELECT <col_name> FROM <table_name>;` // to get a data from the table.
+
+
+-`SELECT * FROM <table_name> WHERE {conditions..};`
+
+Conditions -> comparison of column data with your values
+Examples ->
+```
+SELECT *FROM second WHERE DoB > '2020-01-01' OR Gender = 'Female';
+
+SELECT _ FROM second WHERE NOT Gender = 'Female';
+SELECT _ FROM second WHERE DoB > '2020-01-01' OR Gender = 'Female';
+Select _FROM second WHERE DoB < '2020-01-01';
+SELECT _ FROM second WHERE Name LIKE "_a%";
+SELECT * FROM second WHERE Name LIKE "%a%";
+
+SELECT * FROM second WHERE Gender = 'Female' ORDER BY DoB DESC Limit 2;
+```
