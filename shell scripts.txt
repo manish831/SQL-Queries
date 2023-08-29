@@ -1,0 +1,203 @@
+
+C:\Users\ASUS>mysql -u root -p
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 17
+Server version: 8.0.34 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE Blogging
+    -> ^C
+mysql> CREATE Blogging;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Blogging' at line 1
+mysql> CREATE Database Blogging;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| acciocoder         |
+| blogging           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use blogging;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table blogs (title varchar(30), id int, content VARCHAR(1200));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_blogging |
++--------------------+
+| blogs              |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> DROP Table blogs;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+C:\Users\ASUS>mysql -u root -p
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.34 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show db;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'db' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| acciocoder         |
+| blogging           |
+| information_schema |
+| movie              |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use movie;
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_movie |
++-----------------+
+| actors          |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> desc actors;
++---------+-------------------------------------+------+-----+---------+----------------+
+| Field   | Type                                | Null | Key | Default | Extra          |
++---------+-------------------------------------+------+-----+---------+----------------+
+| Name    | varchar(20)                         | NO   |     | NULL    |                |
+| Gender  | enum('Male','Female','TransGender') | NO   |     | NULL    |                |
+| Charges | decimal(10,0)                       | YES  |     | NULL    |                |
+| Id      | int                                 | NO   | PRI | NULL    | auto_increment |
++---------+-------------------------------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> create table IF NOT EXISTS Friends(
+    -> Name varchar(20) Not NULL,
+    -> Gender ENUM ("Male", "Female") NOT NULL,
+    -> MobileNo INT,
+    -> Id INt AUTO_INCREMENT,
+    -> Primary Key(Id)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_movie |
++-----------------+
+| actors          |
+| friends         |
++-----------------+
+2 rows in set (0.00 sec)
+
+mysql> create table IF NOT EXISTS Friends(
+    ->     -> Name varchar(20) Not NULL,
+    ->     -> Gender ENUM ("Male", "Female") NOT NULL,
+    ->     -> MobileNo INT,
+    ->     -> Id INt AUTO_INCREMENT,
+    ->     -> Primary Key(Id)
+    ->     -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> Name varchar(20) Not NULL,
+    -> Gender ENUM ("Male", "Female") NOT NULL,
+  ' at line 2
+mysql> create table IF NOT EXISTS Friends(
+    -> Name varchar(20) Not NULL,
+    -> Gender ENUM ("Male", "Female") NOT NULL,
+    -> MobileNo INT,
+    -> Id INt AUTO_INCREMENT,
+    -> Primary Key(Id)
+    -> );
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_movie |
++-----------------+
+| actors          |
+| friends         |
++-----------------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO Actors (Name, charges, gender) VALUES ("SRK", 1000000, "Male");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc actors;
++---------+-------------------------------------+------+-----+---------+----------------+
+| Field   | Type                                | Null | Key | Default | Extra          |
++---------+-------------------------------------+------+-----+---------+----------------+
+| Name    | varchar(20)                         | NO   |     | NULL    |                |
+| Gender  | enum('Male','Female','TransGender') | NO   |     | NULL    |
+            |
+| Charges | decimal(10,0)                       | YES  |     | NULL    |                |
+| Id      | int                                 | NO   | PRI | NULL    | auto_increment |
++---------+-------------------------------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO Actors (Name, charges, gender) VALUES ("Akshay", 1000000, "Male");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Actors (Name, charges, gender) VALUES ("Priyanka", 150, "Female"), ("Aliya", 4000, "Female"), ("Robert", 12345, "Male");
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT Name, Gender, Actor from actors;
+ERROR 1054 (42S22): Unknown column 'Actor' in 'field list'
+mysql> SELECT Name, Gender, Charges from actors;
++----------+--------+---------+
+| Name     | Gender | Charges |
++----------+--------+---------+
+| SRK      | Male   | 1000000 |
+| Akshay   | Male   | 1000000 |
+| Priyanka | Female |     150 |
+| Aliya    | Female |    4000 |
+| Robert   | Male   |   12345 |
++----------+--------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from actors;
++----------+--------+---------+----+
+| Name     | Gender | Charges | Id |
++----------+--------+---------+----+
+| SRK      | Male   | 1000000 |  1 |
+| Akshay   | Male   | 1000000 |  2 |
+| Priyanka | Female |     150 |  3 |
+| Aliya    | Female |    4000 |  4 |
+| Robert   | Male   |   12345 |  5 |
++----------+--------+---------+----+
+5 rows in set (0.00 sec)
+
+mysql>
