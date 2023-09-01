@@ -26,3 +26,20 @@ CREATE TABLE <name>{
 -`INSERT INTO <table_name> (col1, col2, ...) VALUES(<val1>, <val2>, ...);` // to insert value into a table
 
 -`SELECT <col_name> FROM <table_name>;` // to get a data from the table.
+
+### Interview Questions:
+
+## 1: Diffrenece between `BETWEEN` and `IN`
+`BETWEEN` operator is used to fetch rows based on range of values
+```
+For example,
+SELECT * FROM Students 
+WHERE ROLL_NO BETWEEN 20 AND 30;
+```
+
+The `IN` operator is used to check for values contained in specific sets. 
+```
+For example, 
+SELECT * FROM Students 
+WHERE ROLL_NO IN (20,21,23);
+```
