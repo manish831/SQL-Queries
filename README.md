@@ -3,6 +3,7 @@
 -`SHOW DATABASES;`
 // to show all the databases available in the system.
 
+
 -`USE <database_name>;`
 // to select a particular database to run queries on.
 
