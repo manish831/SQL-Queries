@@ -18,6 +18,8 @@ CREATE TABLE <name>{
 }
 ```
 
+
+
 //to create a new table
 
 -`DESC <table_name>;` // to show structure of the table
